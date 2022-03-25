@@ -5,13 +5,19 @@ import java.time.LocalDate;
 
 import com.devsuperior.bds04.entities.Event;
 
+import javax.validation.constraints.*;
+
 public class EventDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+
+	@NotBlank(message = "Campo requerido")
 	private String name;
+	@FutureOrPresent( message = "A data do evento não pode ser passada")
 	private LocalDate date;
 	private String url;
+	@NotNull(message = "Campo requerido")
 	private Long cityId;
 	
 	public EventDTO() {
@@ -30,7 +36,7 @@ public class EventDTO implements Serializable {
 		name = entity.getName();
 		date = entity.getDate();
 		url = entity.getUrl();
-		cityId = entity.getCity().getId();
+    	cityId = entity.getCity().getId();
 	}
 
 	public Long getId() {
