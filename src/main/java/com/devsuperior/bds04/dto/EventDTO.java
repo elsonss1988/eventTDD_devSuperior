@@ -36,7 +36,7 @@ public class EventDTO implements Serializable {
 		name = entity.getName();
 		date = entity.getDate();
 		url = entity.getUrl();
-    	cityId = entity.getCity().getId();
+    	//cityId = entity.getCity().getId();
 	}
 
 	public Long getId() {
