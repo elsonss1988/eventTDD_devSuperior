@@ -50,8 +50,9 @@ public class EventServices {
     public EventDTO insert( EventDTO dto){
         Event newEvent = new Event();
         copyDTO(newEvent,dto);
-        dto = new EventDTO(repository.save(newEvent));
-        return dto;
+        newEvent.setCity(cityRepository.getOne(dto.getCityId()));
+        EventDTO newDTO = new EventDTO(repository.save(newEvent));
+        return newDTO;
     }
 
    public void delete(Long id){
